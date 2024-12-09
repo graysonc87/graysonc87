@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stain Removal Guide</title>
+</head>
+<body>
+  <h1>Stain Removal Helper</h1>
+  <label for="material">Material:</label>
+  <input type="text" id="material" placeholder="e.g., Cotton, Carpet, Wood">
+  
+  <br><br>
+  
+  <label for="stainType">Stain Type:</label>
+  <input type="text" id="stainType" placeholder="e.g., Coffee, Ink, Wine">
+  
+  <br><br>
+  
+  <button onclick="getStainSolution()">Get Solution</button>
+  
+  <h2>Recommended Solution:</h2>
+  <p id="solution"></p>
+
+  <script>
+    function getStainSolution() {
+      const material = document.getElementById('material').value.trim().toLowerCase();
+      const stainType = document.getElementById('stainType').value.trim().toLowerCase();
+      
+      if (material === "" || stainType === "") {
+        document.getElementById('solution').innerText = "Please enter both material and stain type.";
+        return;
+      }
+      
+      let solution = "Sorry, we don't have a solution for this combination yet.";
+
+      // Solutions based on material and stain type
+      if (material.includes("cotton") && stainType.includes("coffee")) {
+        solution = "Blot the stain with cold water, apply liquid detergent, and rinse. Use vinegar for persistent stains.";
+      } else if (material.includes("carpet") && stainType.includes("wine")) {
+        solution = "Blot with paper towels, apply a mixture of dish soap and water, then blot again. Use baking soda for odor removal.";
+      } else if (material.includes("wood") && stainType.includes("ink")) {
+        solution = "Gently rub with isopropyl alcohol or a baking soda paste. Avoid excessive moisture.";
+      } else if (material.includes("silk") && stainType.includes("grease")) {
+        solution = "Sprinkle cornstarch or talcum powder, let it sit, then brush off. Use a mild detergent solution afterward.";
+      }
+
+      document.getElementById('solution').innerText = solution;
+    }
+  </script>
+</body>
+</html>
